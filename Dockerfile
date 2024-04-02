@@ -6,10 +6,10 @@ RUN dotnet publish "./BackendOne.API/BackendOne.API.csproj" -c release -o /app -
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
-ENV ASPNETCORE_URLS=http://+:4008
+# ENV ASPNETCORE_URLS=http://+:4008
 
-# ENV ASPNETCORE_URLS=http://+:4008 \
-#     ConnectionStrings__Connection=mongodb://host.docker.internal:27018
+ENV ASPNETCORE_URLS=http://+:4008 \
+    ConnectionStrings__Connection=mongodb://host.docker.internal:27018
 
 WORKDIR /app
 COPY --from=build /app ./
